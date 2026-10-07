@@ -121,7 +121,27 @@ public class GymGUI extends JFrame {
         displayArea.setEditable(false);
     }
 
-    private void clearFields(JTextField... fields) {
+    
+    private JComboBox<String> createStyledComboBox(String[] items, int width) {
+        JComboBox<String> comboBox = new JComboBox<>(items);
+        comboBox.setFont(LABEL_FONT);
+        comboBox.setPreferredSize(new Dimension(width, 36));
+        comboBox.setBackground(FIELD_BG);
+        comboBox.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(FIELD_BORDER, 2, true),
+                new EmptyBorder(0, 8, 0, 8)));
+        return comboBox;
+    }
+
+    private void initializeFrame() {
+        setTitle("Gym Management System");
+        setSize(1280, 720);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        getContentPane().setBackground(PRIMARY_COLOR);
+    }
+
+    private void setupMainPanel() {private void clearFields(JTextField... fields) {
         for (JTextField field : fields) {
             field.setText("");
         }
@@ -142,26 +162,6 @@ public class GymGUI extends JFrame {
         return field;
     }
 
-    private JComboBox<String> createStyledComboBox(String[] items, int width) {
-        JComboBox<String> comboBox = new JComboBox<>(items);
-        comboBox.setFont(LABEL_FONT);
-        comboBox.setPreferredSize(new Dimension(width, 36));
-        comboBox.setBackground(FIELD_BG);
-        comboBox.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(FIELD_BORDER, 2, true),
-                new EmptyBorder(0, 8, 0, 8)));
-        return comboBox;
-    }
-
-    private void initializeFrame() {
-        setTitle("Gym Management System");
-        setSize(1280, 720);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
-        getContentPane().setBackground(PRIMARY_COLOR);
-    }
-
-    private void setupMainPanel() {
         JPanel mainPanel = new JPanel(new BorderLayout());
         mainPanel.setBackground(PRIMARY_COLOR);
         mainPanel.add(createTopNavBar(), BorderLayout.NORTH);
